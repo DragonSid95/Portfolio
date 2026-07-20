@@ -1,0 +1,36 @@
+---
+const links = [
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About' },
+  { href: '/projects', label: 'Projects' },
+  { href: '/contact', label: 'Contact' },
+];
+
+const current = Astro.url.pathname;
+---
+
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="/" class="nav-logo">Portfolio</a>
+    <ul class="nav-menu" id="navMenu">
+      {
+        links.map((link) => (
+          <li class="nav-item">
+            <a
+              href={link.href}
+              class:list={['nav-link', { active: current === link.href }]}
+            >
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle theme">
+      <i class="fas fa-moon"></i>
+    </button>
+    <div class="nav-toggle" id="navToggle" role="button" aria-label="Open menu" tabindex="0">
+      <i class="fas fa-bars"></i>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+<rect width="300" height="300" fill="#4361ee"/>
+<rect x="50" y="100" width="200" height="150" rx="10" fill="#3a56d4"/>
+<text x="150" y="190" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="white" text-anchor="middle">Your Name</text>
+<text x="150" y="220" font-family="Arial, sans-serif" font-size="14" fill="white" text-anchor="middle">Frontend Developer</text>
+</svg>

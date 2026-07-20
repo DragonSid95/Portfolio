@@ -1,0 +1,41 @@
+---
+import type { Project } from '../data/projects';
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+const slug = project.category.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+---
+
+<article class="project-card reveal" data-category={slug}>
+  <img
+    src={project.image}
+    alt={project.title}
+    class="project-img"
+    loading="lazy"
+    width="600"
+    height="400"
+  />
+  <div class="project-info">
+    <span class="project-category">{project.category}</span>
+    <h3 class="project-title">{project.title}</h3>
+    <p class="project-description">{project.description}</p>
+    <div class="project-tech">
+      {project.technologies.map((tech) => <span class="tech-tag">{tech}</span>)}
+    </div>
+    <div class="project-links">
+      {project.demo && (
+        <a href={project.demo} class="project-link" target="_blank" rel="noopener">
+          Live Demo <i class="fas fa-external-link-alt"></i>
+        </a>
+      )}
+      {project.github && (
+        <a href={project.github} class="project-link" target="_blank" rel="noopener">
+          GitHub <i class="fab fa-github"></i>
+        </a>
+      )}
+    </div>
+  </div>
+</article>

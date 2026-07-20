@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { projects, categories } from '../data/projects';
+
+const slugify = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+---
+
+<BaseLayout title="Projects | My Portfolio">
+  <!-- Header -->
+  <section class="projects-header">
+    <div class="projects-container">
+      <h1 class="projects-title">My Projects</h1>
+      <p class="projects-subtitle">A collection of my recent work and achievements</p>
+    </div>
+  </section>
+
+  <!-- Projects Grid -->
+  <section class="section">
+    <div class="section-container">
+      <div class="project-filters" id="projectFilters">
+        {
+          categories.map((cat) => (
+            <button
+              class:list={['filter-btn', { active: cat === 'All' }]}
+              data-filter={slugify(cat)}
+            >
+              {cat}
+            </button>
+          ))
+        }
+      </div>
+
+      <div class="projects-grid" id="projectsGrid">
+        {projects.map((project) => <ProjectCard project={project} />)}
+      </div>
+
+      <p id="noResults" class="text-center mt-2" hidden>
+        No projects match this filter.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

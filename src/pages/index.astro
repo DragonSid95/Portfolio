@@ -1,0 +1,75 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { projects } from '../data/projects';
+
+const featured = projects.slice(0, 3);
+
+const skills = [
+  { category: 'Frontend', items: ['HTML', 'CSS', 'JavaScript', 'React', 'Vue'] },
+  { category: 'Backend', items: ['Node.js', 'Python', 'PHP', 'REST API'] },
+  { category: 'Tools', items: ['Git', 'Webpack', 'VS Code', 'Figma'] },
+];
+---
+
+<BaseLayout title="My Portfolio">
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-container">
+      <div class="hero-content">
+        <h1 class="hero-title">Hello, I'm <span class="highlight">Your Name</span></h1>
+        <p class="hero-subtitle">Frontend Developer &amp; Designer</p>
+        <p class="hero-text">
+          I create beautiful, functional web experiences that delight users and solve real problems.
+        </p>
+        <a href="/projects" class="btn btn-primary">View My Work</a>
+        <a href="/contact" class="btn btn-secondary">Get In Touch</a>
+      </div>
+      <div class="hero-image">
+        <img
+          src="/images/profile-photo-REPLACE-ME.jpg"
+          alt="Profile Photo"
+          class="profile-pic"
+          width="300"
+          height="300"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Projects -->
+  <section class="section">
+    <div class="section-container">
+      <h2 class="section-title reveal">Featured Projects</h2>
+      <p class="section-subtitle reveal">A glimpse into my recent work</p>
+      <div class="projects-grid">
+        {featured.map((project) => <ProjectCard project={project} />)}
+      </div>
+      <div class="view-all reveal">
+        <a href="/projects" class="btn btn-outline">View All Projects</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section class="section bg-light">
+    <div class="section-container">
+      <h2 class="section-title reveal">Technical Skills</h2>
+      <p class="section-subtitle reveal">Technologies I work with</p>
+      <div class="skills-grid">
+        {
+          skills.map((group) => (
+            <div class="skill-category reveal">
+              <h3>{group.category}</h3>
+              <div class="skills">
+                {group.items.map((item) => (
+                  <span class="skill-tag">{item}</span>
+                ))}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>

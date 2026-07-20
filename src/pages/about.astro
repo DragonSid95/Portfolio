@@ -1,0 +1,112 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const experience = [
+  {
+    date: '2020 - Present',
+    role: 'Senior Frontend Developer',
+    company: 'Tech Company Inc.',
+    detail:
+      'Lead development of responsive web applications using modern JavaScript frameworks and CSS best practices.',
+  },
+  {
+    date: '2018 - 2020',
+    role: 'Frontend Developer',
+    company: 'Digital Agency',
+    detail:
+      'Build and maintain client websites with focus on performance and user experience optimization.',
+  },
+  {
+    date: '2016 - 2018',
+    role: 'Junior Developer',
+    company: 'Startup XYZ',
+    detail:
+      'Collaborate with design and product teams to deliver web applications from concept to deployment.',
+  },
+];
+---
+
+<BaseLayout title="About | My Portfolio">
+  <!-- Header -->
+  <section class="about-header">
+    <div class="about-container">
+      <h1 class="about-title">About Me</h1>
+      <p class="about-subtitle">Let me tell you about myself</p>
+    </div>
+  </section>
+
+  <!-- About Content -->
+  <section class="section">
+    <div class="about-content">
+      <div class="about-text reveal">
+        <h2>Hi, I'm <span class="highlight">Your Name</span></h2>
+        <p>
+          I'm a passionate frontend developer dedicated to creating beautiful, functional web
+          experiences. With years of experience in building responsive, user-friendly applications,
+          I bring both technical expertise and creative vision to every project.
+        </p>
+
+        <h3>What I Do</h3>
+        <ul class="about-list">
+          <li><i class="fas fa-check-circle"></i> Frontend Development</li>
+          <li><i class="fas fa-check-circle"></i> UI/UX Design</li>
+          <li><i class="fas fa-check-circle"></i> Full-Stack Applications</li>
+          <li><i class="fas fa-check-circle"></i> Web Performance Optimization</li>
+          <li><i class="fas fa-check-circle"></i> Responsive Design</li>
+        </ul>
+
+        <h3>My Mission</h3>
+        <p>
+          My mission is to bridge the gap between creative design and functional code, delivering
+          projects that not only look great but also solve real-world problems and provide
+          exceptional user experiences.
+        </p>
+      </div>
+      <div class="about-image reveal">
+        <img
+          src="/images/profile-photo-REPLACE-ME.jpg"
+          alt="Profile Photo"
+          class="about-pic"
+          width="400"
+          height="400"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section class="section bg-light">
+    <div class="section-container">
+      <h2 class="section-title reveal">Experience</h2>
+      <p class="section-subtitle reveal">My professional journey</p>
+      <div class="experience-timeline">
+        {
+          experience.map((item) => (
+            <div class="experience-item reveal">
+              <div class="experience-date">{item.date}</div>
+              <div class="experience-content">
+                <h3>{item.role}</h3>
+                <p class="company">{item.company}</p>
+                <p>{item.detail}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section class="section">
+    <div class="section-container">
+      <h2 class="section-title reveal">Education</h2>
+      <p class="section-subtitle reveal">Academic background</p>
+      <div class="education-list">
+        <div class="education-item reveal">
+          <h3>Bachelor of Science in Computer Science</h3>
+          <p class="school">University Name (2012 - 2016)</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
