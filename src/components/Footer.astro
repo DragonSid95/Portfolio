@@ -1,4 +1,6 @@
 ---
+const base = import.meta.env.BASE_URL;
+const withBase = (p) => `${base}${p.replace(/^\/+/, '')}`;
 const year = new Date().getFullYear();
 const links = [
   { href: '/', label: 'Home' },
@@ -17,7 +19,7 @@ const links = [
     <div class="footer-links">
       <h4>Quick Links</h4>
       <ul>
-        {links.map((link) => <li><a href={link.href}>{link.label}</a></li>)}
+        {links.map((link) => <li><a href={withBase(link.href)}>{link.label}</a></li>)}
       </ul>
     </div>
     <div class="footer-social">

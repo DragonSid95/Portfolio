@@ -1,4 +1,7 @@
 ---
+const base = import.meta.env.BASE_URL;
+const withBase = (p) => `${base}${p.replace(/^\/+/, '')}`;
+
 const links = [
   { href: '/', label: 'Home' },
   { href: '/about', label: 'About' },
@@ -6,19 +9,20 @@ const links = [
   { href: '/contact', label: 'Contact' },
 ];
 
-const current = Astro.url.pathname;
+const norm = (p) => '/' + p.replace(/^\/+|\/+$/g, '');
+const current = norm(Astro.url.pathname);
 ---
 
 <nav class="navbar">
   <div class="nav-container">
-    <a href="/" class="nav-logo">Portfolio</a>
+    <a href={base} class="nav-logo">Portfolio</a>
     <ul class="nav-menu" id="navMenu">
       {
         links.map((link) => (
           <li class="nav-item">
             <a
-              href={link.href}
-              class:list={['nav-link', { active: current === link.href }]}
+              href={withBase(link.href)}
+              class:list={['nav-link', { active: current === norm(link.href) }]}
             >
               {link.label}
             </a>

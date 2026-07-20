@@ -1,0 +1,9 @@
+# Normalize all text files to LF line endings in the repo.
+* text=auto eol=lf
+
+# Keep binary/image assets untouched.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.ico binary
+*.svg text

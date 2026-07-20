@@ -6,12 +6,13 @@ interface Props {
 }
 
 const { project } = Astro.props;
+const base = import.meta.env.BASE_URL;
 const slug = project.category.toLowerCase().replace(/[^a-z0-9]+/g, '-');
 ---
 
 <article class="project-card reveal" data-category={slug}>
   <img
-    src={project.image}
+    src={`${base}${project.image.replace(/^\/+/, '')}`}
     alt={project.title}
     class="project-img"
     loading="lazy"
