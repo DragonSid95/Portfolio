@@ -1,5 +1,7 @@
-import { defineConfig } from 'astro/config';
+  import { defineConfig } from 'astro/config';
 
-// Uncomment and set to your production URL for correct absolute links & sitemap.
-// export default defineConfig({ site: 'https://yourusername.github.io' });
-export default defineConfig({});
+  export default defineConfig({
+    site: 'https://dragonsid95.github.io',
+    base: '/Portfolio/',
+  });
+  (site = your domain, base = the sub-folder. This makes all asset links resolve correctly under /Portfolio/.)
